@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      TelaInicial());
+      home: TelaInicial());
     
  }
 }
@@ -20,7 +20,21 @@ StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      body: Center(
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            Text(
+              'Caverna do Dragão',
+              style: Theme.of(context).textTheme.headlineMedium
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('entrar')
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
