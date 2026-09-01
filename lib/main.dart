@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'telaHeroi.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,9 +30,18 @@ StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute (
+                    builder: (context) => 
+                    TelaJogoHeroi(),
+                  )
+                );
+              },
               child: Text('entrar')
             ),
+            Image.asset('images.jfif')
           ],
         ),
       ),
