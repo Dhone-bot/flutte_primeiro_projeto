@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'telaJogo.dart';
 
 class TelaJogoHeroi extends StatefulWidget {
   const TelaJogoHeroi({super.key});
@@ -55,6 +56,15 @@ class TelaJogoHeroiState extends State<TelaJogoHeroi> {
                   ),
                 ),
               ),
+              ElevatedButton(onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute (
+                    builder: (context) => 
+                    TelaJogo(nomeHeroi,urlImagem)
+                  )
+                );
+              }, child: Text('abrir jogo'))
         ],
        )
       )
