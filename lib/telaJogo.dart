@@ -14,15 +14,50 @@ class TelaJogo extends StatefulWidget {
   final int moedas;
   final int poder;
   final int vida;
+  
 
+  
   @override
   State<TelaJogo> createState() => TelaJogoState();
 }
 
 class TelaJogoState extends State<TelaJogo> {
-
+  double jump = 100;
+  bool pulando = false;
+  final double chao = 120;
+  late double posicaoVertical = chao;
   double posisaohorizontal = 50;
-  int miliss = 20;
+  int miliss = 200;
+
+void direita() {
+  setState((){
+    posisaohorizontal += 40;
+
+  });
+}
+
+void esquerda() {
+  setState(() {
+    posisaohorizontal -= 40;
+  });
+}
+void pular ()async{
+  if(pulando) return;
+  setState(() {
+    pulando = true;
+    posicaoVertical = chao + jump;
+  });
+  await Future.delayed(Duration(milliseconds: miliss));
+  if(!mounted) return;
+  setState(() => posicaoVertical = chao);
+
+  await Future.delayed(Duration(milliseconds: miliss));
+  if(!mounted) return;
+  setState(() => pulando = false);
+}
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,23 +118,36 @@ class TelaJogoState extends State<TelaJogo> {
           Positioned(
             bottom: 40,
             left: 20,
-            child: Text("esquerda"))
-            onpresser
+            child: FloatingActionButton(
+            onPressed: esquerda,
+            child: Text("mover esquerda"),
+            )
+          ),
+          Positioned(
+            bottom: 40,
+            right: 20,
+            child: FloatingActionButton(
+            onPressed: direita,
+            child: Text("mover direita"),
+            )
+          ),
+         Positioned(
+            bottom: 40,
+            left: 0,
+            right: 0,
+            child: Center(
+            child: FloatingActionButton(
+            onPressed: pular,
+            child: Text("pular"),
+            )
+          ),
+          ),
         ],
       ),
     );
   }
-  void direita() {
-  setState((){
-    posisaohorizontal += 40;
-
-  });
+  
 }
 
-void esquerda() {
-  setState(() {
-    posisaohorizontal -= 40;
-  });
-}
-}
+
 
