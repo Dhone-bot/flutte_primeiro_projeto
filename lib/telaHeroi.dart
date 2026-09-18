@@ -38,6 +38,7 @@ class TelaJogoHeroiState extends State<TelaJogoHeroi> {
                 ),
               ],
             ),
+            Image.network(urlImagem),
             Card(
               elevation: 5, // Dá uma sombra 3D ao cartão
               color: Colors.grey[200],
@@ -97,22 +98,19 @@ class TelaJogoHeroiState extends State<TelaJogoHeroi> {
         vida = 200;
         moedas = 50;
         poder = 100;
-        urlImagem =
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCY6LTA8BspdrF9bvIWOTJHYWVqsZRIvGi7l8_uFRPJQ&s=10";
-      } else if (tipoHeroi == "mago") {
+        urlImagem ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCY6LTA8BspdrF9bvIWOTJHYWVqsZRIvGi7l8_uFRPJQ&s=10";
+      } else if (tipoHeroi == "Mago") {
         nomeHeroi = "Mago";
         vida = 50;
         moedas = 100;
         poder = 200;
-        urlImagem =
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOmnWFg2HVAYj2jHoL1pLbbw3nid6CmnCY2RYm59V4ew&s=10";
-      } else if (tipoHeroi == "arqueiro") {
-        nomeHeroi = "arqueiro";
+        urlImagem ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOmnWFg2HVAYj2jHoL1pLbbw3nid6CmnCY2RYm59V4ew&s=10";
+      } else if (tipoHeroi == "Arqueiro") {
+        nomeHeroi = "Arqueiro";
         vida = 100;
         moedas = 200;
         poder = 100;
-        urlImagem =
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwwfGRjNVk4sRxVj0zS13mxw_e8eWdR5lNfikPs4P9Rg&s=10";
+        urlImagem ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwwfGRjNVk4sRxVj0zS13mxw_e8eWdR5lNfikPs4P9Rg&s=10";
       }
     });
   }

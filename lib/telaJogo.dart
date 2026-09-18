@@ -6,9 +6,8 @@ class TelaJogo extends StatefulWidget {
     this.urlImagem,
     this.vida,
     this.moedas,
-    this.poder, {
-    super.key,
-  });
+    this.poder, 
+    {super.key,});
 
   final String nomeHeroi;
   final String urlImagem;
@@ -21,22 +20,20 @@ class TelaJogo extends StatefulWidget {
 }
 
 class TelaJogoState extends State<TelaJogo> {
+
+  double posisaohorizontal = 50;
+  int miliss = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  'https://static.wikia.nocookie.net/hollowknight/images/8/88/Screenshot_HK_Royal_Waterways_10.png/revision/latest/scale-to-width-down/250?cb=20241212180218&path-prefix=pt',
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+          Positioned.fill(
+            
+            child: Image.network
+            ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9wWawPb9PGI8CKAIxyI3zVuPyR7eI0b0zpo5liEG3jA&s=10',
+            fit: BoxFit.cover,
+            )
           ),
           Positioned(
             bottom: 30,
@@ -49,7 +46,7 @@ class TelaJogoState extends State<TelaJogo> {
                 child: Column(
                   children: [
                     Text(
-                      'Classe:  $widget.nomeHeroi',
+                      'Classe:  ${widget.nomeHeroi}',
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -57,18 +54,18 @@ class TelaJogoState extends State<TelaJogo> {
                     ),
                     const Divider(), // Linha divisória
                     Text(
-                      '❤️ Vida: $widget.vida',
+                      '❤️ Vida: ${widget.vida}',
                       style: const TextStyle(fontSize: 18, color: Colors.red),
                     ),
                     Text(
-                      '💰 Moedas: $widget.moedas',
+                      '💰 Moedas: ${widget.moedas}',
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.orange,
                       ),
                     ),
                     Text(
-                      '⚔️ Poder: $widget.poder',
+                      '⚔️ Poder: ${widget.poder}',
                       style: const TextStyle(fontSize: 18, color: Colors.blue),
                     ),
                   ],
@@ -76,8 +73,33 @@ class TelaJogoState extends State<TelaJogo> {
               ),
             ),
           ),
+          AnimatedPositioned(
+            duration: Duration(milliseconds: miliss),
+            curve: Curves.bounceIn,
+            left: posisaohorizontal,
+            bottom: 120,
+            child: Image.network(widget.urlImagem, height: 130,),
+          ),
+          Positioned(
+            bottom: 40,
+            left: 20,
+            child: Text("esquerda"))
+            onpresser
         ],
       ),
     );
   }
+  void direita() {
+  setState((){
+    posisaohorizontal += 40;
+
+  });
 }
+
+void esquerda() {
+  setState(() {
+    posisaohorizontal -= 40;
+  });
+}
+}
+
