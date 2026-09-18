@@ -112,7 +112,7 @@ void pular ()async{
             duration: Duration(milliseconds: miliss),
             curve: Curves.bounceIn,
             left: posisaohorizontal,
-            bottom: 120,
+            bottom: posicaoVertical,
             child: Image.network(widget.urlImagem, height: 130,),
           ),
           Positioned(
