@@ -98,7 +98,7 @@ class TelaJogoHeroiState extends State<TelaJogoHeroi> {
         vida = 200;
         moedas = 50;
         poder = 100;
-        urlImagem ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCY6LTA8BspdrF9bvIWOTJHYWVqsZRIvGi7l8_uFRPJQ&s=10";
+        urlImagem ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQev6FBlCA0NupJbRMQ-0a21eJiW5IduNvMpKqtS6WLlNKWZIAsOW7Dhmc&s=10";
       } else if (tipoHeroi == "Mago") {
         nomeHeroi = "Mago";
         vida = 50;

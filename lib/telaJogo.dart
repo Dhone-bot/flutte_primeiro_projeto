@@ -25,9 +25,15 @@ class TelaJogoState extends State<TelaJogo> {
   double jump = 100;
   bool pulando = false;
   final double chao = 120;
+  
   late double posicaoVertical = chao;
   double posisaohorizontal = 50;
+  double posHorizontalPocao = 150;
+  double posVerticalPocao = 200;
+  
   int miliss = 200;
+  
+  bool pocaoColetada = false;
 
 void direita() {
   setState((){
@@ -47,6 +53,12 @@ void pular ()async{
     pulando = true;
     posicaoVertical = chao + jump;
   });
+  checarColisao();
+      await Future.delayed(const Duration(milliseconds: 400));
+      setState(() {
+      posicaoVertical = posicaoVertical - 40;
+  });
+  
   await Future.delayed(Duration(milliseconds: miliss));
   if(!mounted) return;
   setState(() => posicaoVertical = chao);
@@ -55,6 +67,19 @@ void pular ()async{
   if(!mounted) return;
   setState(() => pulando = false);
 }
+void checarColisao() {
+    if (pocaoColetada) return;
+
+    bool bateX = (posisaohorizontal - posHorizontalPocao).abs() < 60;
+    bool bateY = (posicaoVertical - posVerticalPocao).abs() < 60;
+
+    if (bateX && bateY) {
+      setState(() {
+        pocaoColetada = true;
+        // vida += 50;
+      });
+    }
+  }
 
 
 
