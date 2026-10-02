@@ -32,6 +32,7 @@ class TelaJogoState extends State<TelaJogo> {
   double posVerticalPocao = 200;
   
   int miliss = 200;
+  late int vida;
   
   bool pocaoColetada = false;
 
@@ -40,6 +41,10 @@ void direita() {
     posisaohorizontal += 40;
 
   });
+}
+void inistate(){
+  super.initState();
+  vida = widget.vida;
 }
 
 void esquerda() {
@@ -76,7 +81,7 @@ void checarColisao() {
     if (bateX && bateY) {
       setState(() {
         pocaoColetada = true;
-        // vida += 50;
+        vida += 50;
       });
     }
   }
@@ -114,7 +119,7 @@ void checarColisao() {
                     ),
                     const Divider(), // Linha divisória
                     Text(
-                      '❤️ Vida: ${widget.vida}',
+                      '❤️ Vida: $vida',
                       style: const TextStyle(fontSize: 18, color: Colors.red),
                     ),
                     Text(
